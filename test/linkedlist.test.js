@@ -53,7 +53,7 @@ const LinkedList = require('../linkedlist')
         });
     })
 
-    describe('insertAt', () => {
+    xdescribe('insertAt', () => {
         it('should insert data by index', () => {
             const list = new LinkedList()
             const data = 9001
@@ -68,7 +68,7 @@ const LinkedList = require('../linkedlist')
         });
     });
 
-    describe('removeAt', () => {
+    xdescribe('removeAt', () => {
         it('should delete element by index', () => {
             const list = new LinkedList();
 
