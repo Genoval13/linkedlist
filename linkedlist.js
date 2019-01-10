@@ -6,7 +6,9 @@ class LinkedList {
         this.tail = null;
     } 
   
-    // add()  
+    add() {
+        
+    } 
     // get() 
     // indexOf()  
     // insertAt()
