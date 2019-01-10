@@ -1,5 +1,5 @@
 const expect = require('chai').expect
-const Node = require('../node')
+const Node = require('../node');
 const LinkedList = require('../linkedlist')
 
 
