@@ -29,11 +29,12 @@ const LinkedList = require('../linkedlist')
             const list = new LinkedList();
 
             list.add(666);
+            expect(list.tail.data).to.eq(666);
+
             list.add(420);
+            expect(list.tail.data).to.eq(420);
 
             expect(list.length).to.equal(2);
-            expect(list.indexOf(0)).to.equal(666);
-            expect(list.indexOf(1)).to.equal(420);
         });
 
     })
@@ -46,14 +47,14 @@ const LinkedList = require('../linkedlist')
             list.add(456)
             list.add(789)
 
-            expect(list.indexOf(0)).to.equal(123)
-            expect(list.indexOf(1)).to.equal(456)
-            expect(list.indexOf(2)).to.equal(789)
+            expect(list.indexOf(123)).to.equal(0)
+            expect(list.indexOf(456)).to.equal(1)
+            expect(list.indexOf(789)).to.equal(2)
 
         });
     })
 
-    xdescribe('insertAt', () => {
+    describe('insertAt', () => {
         it('should insert data by index', () => {
             const list = new LinkedList()
             const data = 9001
@@ -64,11 +65,11 @@ const LinkedList = require('../linkedlist')
 
             list.insertAt(position, data)
 
-            expect(list.indexOf(position)).to.equal(data)
+            expect(list.indexOf(data)).to.equal(position);
         });
     });
 
-    xdescribe('removeAt', () => {
+    describe('removeAt', () => {
         it('should delete element by index', () => {
             const list = new LinkedList();
 
@@ -80,7 +81,8 @@ const LinkedList = require('../linkedlist')
 
             list.removeAt(2)
 
-            expect(list.indexOf(2)).to.equal(4)
+            expect(list.indexOf(3)).to.equal(-1);
+            expect(list.indexOf(4)).to.equal(2);
         });
     });
 

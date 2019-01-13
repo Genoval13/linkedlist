@@ -1,11 +1,4 @@
 const Node = require("./node");
-class Node {
-  constructor(data = null, prev = null, next = null) {
-    this.data = data;
-    this.prev = prev;
-    this.next = next;
-  }
-}
 
 class LinkedList {
   constructor() {
@@ -27,25 +20,70 @@ class LinkedList {
     return this;
   }
 
-  indexOf(value) {
-    let currentNode = this.head;
+  indexOf(data) {
     let count = 0;
+    let currentNode = this.head;
 
-    return currentNode.data;
+    while (currentNode !== null) {
+        if (currentNode.data === data) {
+            return count;
+        } else {
+            count++;
+            currentNode = currentNode.next;
+        }
+    }
+
+    return -1;
   }
 
-  get(n, node) {
-    if (this.length === 0) return null;
-    if (n === 0) return node;
-    else this.get(--n, node.next);
+  insertAt(idx, data) {
+    if (idx > 0 && idx > this.length) return false;
+    else {
+        let node = new Node(data);
+        let curr, prev;
+        curr = this.head;
+
+        if (idx === 0) {
+            node.next = this.head;
+            this.head = node;
+        } else {
+            let count = 0;
+
+            while (count < idx) {
+                count++;
+                prev = curr;
+                curr = curr.next;
+            }
+
+            node.next = curr;
+            prev.next = node;
+        }
+        this.length++;
+    }
   }
 
-  // insertAt()
-  // removeAt()
+  removeAt(idx) {
+      if (idx > 0 && idx > this.length) {
+          return -1;
+      } else {
+          let curr, prev, count = 0;
+          curr = this.head;
+          prev = curr;
+
+          if (idx === 0)  {
+            this.head = curr.next;
+          } else {
+              while (count < idx) {
+                  count++;
+                  prev = curr;
+                  curr = curr.next;
+              }
+
+              prev.next = curr.next;
+          }
+          this.length--;
+      }
+  }
 }
-const myList = new LinkedList();
-myList.add(1);
-myList.add(2);
-myList.add(3);
-console.log(myList.get(2, 1));
+
 module.exports = LinkedList;
